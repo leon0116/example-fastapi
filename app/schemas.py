@@ -17,8 +17,8 @@ class UserOut(BaseModel):
       email: EmailStr
       created_at: datetime
       
-      class config:
-            orm_mode = True
+      class Config:
+            from_attributes = True
 
 class Post(PostBase):
       id : int
@@ -27,14 +27,15 @@ class Post(PostBase):
       owner: UserOut
     
       class config:
-            orm_mode = True
+            from_attributes = True
 
 class PostOut(PostBase):
+#class PostOut(BaseModel):
       Post: Post
       votes: int
 
-      class config:
-            orm_mode = True
+      class Config:
+            from_attributes = True
       
       
 class UserCreate(BaseModel):
